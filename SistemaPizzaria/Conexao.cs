@@ -5,7 +5,7 @@ namespace SistemaPizzaria
 {
     class Conexao
     {
-        MySqlConnection con = new MySqlConnection("Data Source=localhost;Initial Catalog=BDPizzaria1;user=root;pwd=12345678");
+        MySqlConnection con = new MySqlConnection("Data Source=localhost;Initial Catalog=DBPizzaria1;user=root;pwd=12345678");
 
         public static string msg;
 
