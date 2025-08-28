@@ -209,6 +209,7 @@
             this.btnCalcular.TabIndex = 12;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = false;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // btnSai
             // 
