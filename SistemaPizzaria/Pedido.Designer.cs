@@ -32,7 +32,6 @@
             this.chkBorda = new System.Windows.Forms.CheckBox();
             this.cmbTamanhoPizza = new System.Windows.Forms.ComboBox();
             this.dgvPedido = new System.Windows.Forms.DataGridView();
-            this.lblValorPizza = new System.Windows.Forms.Label();
             this.grpOpcionais = new System.Windows.Forms.GroupBox();
             this.chkTempero = new System.Windows.Forms.CheckBox();
             this.chkCebola = new System.Windows.Forms.CheckBox();
@@ -45,6 +44,11 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnSai = new System.Windows.Forms.Button();
+            this.lblValorPizza = new System.Windows.Forms.Label();
+            this.lblPesquisar = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.lblcodigo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.grpOpcionais.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +56,7 @@
             // btnNovo
             // 
             this.btnNovo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnNovo.Font = new System.Drawing.Font("Sitka Small Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnNovo.Location = new System.Drawing.Point(299, 403);
             this.btnNovo.Name = "btnNovo";
@@ -89,16 +93,8 @@
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.Size = new System.Drawing.Size(492, 167);
             this.dgvPedido.TabIndex = 3;
-            // 
-            // lblValorPizza
-            // 
-            this.lblValorPizza.AutoSize = true;
-            this.lblValorPizza.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPizza.Location = new System.Drawing.Point(326, 20);
-            this.lblValorPizza.Name = "lblValorPizza";
-            this.lblValorPizza.Size = new System.Drawing.Size(110, 15);
-            this.lblValorPizza.TabIndex = 4;
-            this.lblValorPizza.Text = "VALOR DA PIZZA";
+            this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
+            this.dgvPedido.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPedido_MouseDoubleClick);
             // 
             // grpOpcionais
             // 
@@ -190,7 +186,7 @@
             // btnSalvar
             // 
             this.btnSalvar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSalvar.Font = new System.Drawing.Font("Sitka Small Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSalvar.Location = new System.Drawing.Point(435, 403);
             this.btnSalvar.Name = "btnSalvar";
@@ -203,7 +199,7 @@
             // btnCalcular
             // 
             this.btnCalcular.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCalcular.Font = new System.Drawing.Font("Sitka Small Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalcular.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCalcular.Location = new System.Drawing.Point(580, 403);
             this.btnCalcular.Name = "btnCalcular";
@@ -216,7 +212,7 @@
             // btnSai
             // 
             this.btnSai.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSai.Font = new System.Drawing.Font("Sitka Small Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSai.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSai.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSai.Location = new System.Drawing.Point(706, 403);
             this.btnSai.Name = "btnSai";
@@ -224,12 +220,64 @@
             this.btnSai.TabIndex = 13;
             this.btnSai.Text = "Sair";
             this.btnSai.UseVisualStyleBackColor = false;
+            this.btnSai.Click += new System.EventHandler(this.btnSai_Click);
+            // 
+            // lblValorPizza
+            // 
+            this.lblValorPizza.AutoSize = true;
+            this.lblValorPizza.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorPizza.Location = new System.Drawing.Point(326, 20);
+            this.lblValorPizza.Name = "lblValorPizza";
+            this.lblValorPizza.Size = new System.Drawing.Size(110, 15);
+            this.lblValorPizza.TabIndex = 4;
+            this.lblValorPizza.Text = "VALOR DA PIZZA";
+            // 
+            // lblPesquisar
+            // 
+            this.lblPesquisar.AutoSize = true;
+            this.lblPesquisar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPesquisar.Location = new System.Drawing.Point(567, 153);
+            this.lblPesquisar.Name = "lblPesquisar";
+            this.lblPesquisar.Size = new System.Drawing.Size(78, 15);
+            this.lblPesquisar.TabIndex = 14;
+            this.lblPesquisar.Text = "PESQUISAR";
+            this.lblPesquisar.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(410, 153);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
+            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.TabIndex = 15;
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Location = new System.Drawing.Point(662, 148);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(138, 20);
+            this.txtPesquisar.TabIndex = 16;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
+            // 
+            // lblcodigo
+            // 
+            this.lblcodigo.AutoSize = true;
+            this.lblcodigo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcodigo.Location = new System.Drawing.Point(326, 155);
+            this.lblcodigo.Name = "lblcodigo";
+            this.lblcodigo.Size = new System.Drawing.Size(58, 15);
+            this.lblcodigo.TabIndex = 17;
+            this.lblcodigo.Text = "CÓDIGO";
             // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 504);
+            this.Controls.Add(this.lblcodigo);
+            this.Controls.Add(this.txtPesquisar);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.lblPesquisar);
             this.Controls.Add(this.btnSai);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.btnSalvar);
@@ -260,7 +308,6 @@
         private System.Windows.Forms.CheckBox chkBorda;
         private System.Windows.Forms.ComboBox cmbTamanhoPizza;
         private System.Windows.Forms.DataGridView dgvPedido;
-        private System.Windows.Forms.Label lblValorPizza;
         private System.Windows.Forms.GroupBox grpOpcionais;
         private System.Windows.Forms.TextBox txtValorPizza;
         private System.Windows.Forms.Label lblValorOpcionais;
@@ -273,5 +320,10 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.Button btnSai;
+        private System.Windows.Forms.Label lblValorPizza;
+        private System.Windows.Forms.Label lblPesquisar;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtPesquisar;
+        private System.Windows.Forms.Label lblcodigo;
     }
 }

@@ -2,7 +2,7 @@
 create database DBPizzaria1;
 
 -- USANDO O BANCO DE DADOS
-USE BDPizzaria1;
+USE DBPizzaria1;
 
 -- CRIANDO AS TABELAS DO BANCO DE DADOS
 create table tbPedido(
